@@ -1835,3 +1835,7 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.google.gu
 2024-06-30 18:31:18,982 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2021\eclipse-workspace\Almosafer\src\main\resources
 2024-06-30 18:31:18,990 [Worker-196: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2024-06-30 18:31:18,992 [Worker-196: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2021\eclipse-workspace\Almosafer\src\test\resources
+2024-06-30 18:36:31,153 [Worker-195: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-06-30 18:36:31,155 [Worker-195: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2021\eclipse-workspace\Almosafer\src\main\resources
+2024-06-30 18:36:31,157 [Worker-195: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-06-30 18:36:31,158 [Worker-195: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\2021\eclipse-workspace\Almosafer\src\test\resources
