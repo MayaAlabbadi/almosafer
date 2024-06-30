@@ -1,0 +1,7 @@
+
+public class LoginAndCheckoutProcess {
+	@BeforeTest
+	
+	public void Setup() {
+
+}

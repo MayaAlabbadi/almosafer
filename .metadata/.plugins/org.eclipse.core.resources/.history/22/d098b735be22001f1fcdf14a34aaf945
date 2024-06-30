@@ -1,0 +1,18 @@
+import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TestCases {
+	
+	@Test
+	public void myFirstTest(){
+		String myURL="https://www.google.com";
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get(myURL); 
+		driver.getTitle().toUpperCase(); // string methods
+		System.out.println(driver.getTitle().toUpperCase());
+		
+	}
+
+}

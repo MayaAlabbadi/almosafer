@@ -1,0 +1,57 @@
+import static org.testng.Assert.assertEquals;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class myTestCases {
+	WebDriver driver = new ChromeDriver();
+	String url = "https://global.almosafer.com/en";
+	String expectedLanguage = "en";
+	String expectedCurrency ="SAR";
+	String expectedContactNumber="+966554400000";
+	boolean QuitafLogo = true;
+	
+	@BeforeTest
+	public void mySetup() {
+		driver.get(url);
+		driver.manage().window().maximize();
+		
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8)); //autohandling max 8sec 
+		//cssSelector take the class name and in any space put dot
+		driver.findElement(By.cssSelector(".sc-jTzLTM.hQpNle.cta__button.cta__saudi.btn.btn-primary")).click();
+	}
+	
+	@Test 
+	public void ChecktheLanguage() {
+		WebElement HtmlTag = driver.findElement(By.tagName("html"));
+		String ActualLanguage =HtmlTag.getAttribute("lang");
+		Assert.assertEquals(ActualLanguage, expectedLanguage);
+		
+	}
+	
+	@Test
+	public void TestTheCurrencyisSAR() {
+		String ActualCurrency = driver.findElement(By.xpath("//button[@data-testid='Header__CurrencySelector\']")).getText();
+		Assert.assertEquals(ActualCurrency, expectedCurrency);
+		
+	}
+	
+	@Test
+	public void expectedContactNumber() {
+		String ActualContactNumber = driver.findElement(By.tagName("strong")).getText();
+		Assert.assertEquals(ActualContactNumber, expectedContactNumber);
+	}
+
+	@Test
+	public void CheckQitafLogo() {
+		boolean ActualQitafLogo = driver.findElement(By.xpath("//svg[@data-testid='Footer__QitafLogo']")).isDisplayed();
+		Assert.assertEquals(ActualQitafLogo, QuitafLogo);
+	}
+}

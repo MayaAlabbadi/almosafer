@@ -1,0 +1,39 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class swaglabTest {
+	 
+	 WebDriver driver =new ChromeDriver();
+	 String theURL ="https://www.saucedemo.com/";
+	
+	 
+	 @Test(priority = 1)
+	 public void Login() throws InterruptedException {
+		 WebElement UserName =driver.findElement(By.id("user-name"));
+		 WebElement PasswordInput =driver.findElement(By.id("password"));
+		 WebElement LogInButton =driver.findElement(By.id("login-button"));
+		 
+		 UserName.sendKeys("standard_user");
+		 PasswordInput.sendKeys("secret_sauce");
+		 LogInButton.click();
+		 
+	 }
+	 
+	 @Test(priority = 2)
+	 
+	 public void VerifythatTheWordProductisthere() {
+		String ExpectedValue ="Products";
+		String ActualValue=driver.findElement(By.xpath("//span[data-test='title']")).getText();
+        Assert.assertEquals(ActualValue,ExpectedValue);
+		 
+		 
+		
+		 
+	 }
+	
+
+}

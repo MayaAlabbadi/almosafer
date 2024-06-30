@@ -1,0 +1,30 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class LoginAndCheckoutProcess {
+	WebDriver driver =new ChromeDriver();
+	
+	@BeforeTest
+	public void Setup() throws InterruptedException {
+		Thread.sleep(2000);
+		driver.get("https://www.saucedemo.com/");
+		driver.manage().window().maximize();
+		
+	}
+	
+	@Test
+	public void Login() {
+		driver.findElement(By.id("user-name")).sendKeys("standard_user\r\n");
+		driver.findElement(By.id("password")).sendKeys("secret_sauce");
+		driver.findElement(By.id("login-button")).click();
+		
+		
+	}
+	@Test 
+	public void AddtoChart() {
+		
+	}
+}

@@ -1,0 +1,13 @@
+import org.testng.annotations.BeforeTest;
+
+public class LoginAndCheckoutProcess {
+	
+	@BeforeTest
+	public void Setup() {
+		
+	}
+	
+	@Test
+	public void Login() {
+
+}

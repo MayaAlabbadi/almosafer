@@ -1,0 +1,89 @@
+import static org.testng.Assert.assertEquals;
+
+import java.time.Duration;
+import java.time.LocalDate;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class myTestCases {
+	WebDriver driver = new ChromeDriver();
+	String url = "https://global.almosafer.com/en";
+	String expectedLanguage = "en";
+	String expectedCurrency ="SAR";
+	String expectedContactNumber="+966554400000";
+	
+	
+	@BeforeTest
+	public void mySetup() {
+		driver.get(url);
+		driver.manage().window().maximize();
+		
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(8)); //autohandling max 8sec 
+		//cssSelector take the class name and in any space put dot
+		driver.findElement(By.cssSelector(".sc-jTzLTM.hQpNle.cta__button.cta__saudi.btn.btn-primary")).click();
+	}
+	
+	@Test 
+	public void ChecktheLanguage() {
+		WebElement HtmlTag = driver.findElement(By.tagName("html"));
+		String ActualLanguage =HtmlTag.getAttribute("lang");
+		Assert.assertEquals(ActualLanguage, expectedLanguage);
+		
+	}
+	
+	@Test
+	public void TestTheCurrencyisSAR() {
+		String ActualCurrency = driver.findElement(By.xpath("//button[@data-testid='Header__CurrencySelector\']")).getText();
+		Assert.assertEquals(ActualCurrency, expectedCurrency);
+		
+	}
+	
+	@Test
+	public void expectedContactNumber() {
+		String ActualContactNumber = driver.findElement(By.tagName("strong")).getText();
+		Assert.assertEquals(ActualContactNumber, expectedContactNumber);
+	}
+
+	@Test
+	public void CheckQitafLogo() {
+		boolean QuitafLogo = true;
+	   WebElement TheFooterTag = driver.findElement(By.tagName("footer"));
+	 boolean ActualResult= TheFooterTag.findElement(By.cssSelector(".sc-eopZyb.dngPsA")).findElement(By.tagName("svg")).isDisplayed();
+    Assert.assertEquals(ActualResult, QuitafLogo);
+	
+	}
+	
+	@Test
+	public void CheckHotelTabisNOTselected() {
+		String expectedResult= "false";
+		String ActualResult= driver.findElement(By.id("uncontrolled-tab-example-tab-hotels")).getAttribute("aria-selected");
+		Assert.assertEquals(ActualResult, expectedResult);
+		
+	}
+	
+	@Test
+	public void CheckdepartureandReturnDate() {
+		LocalDate today= LocalDate.now();
+		int ExpectedDepartureDate = today.plusDays(1).getDayOfMonth();
+		int ExpectedReturnDate = today.plusDays(2).getDayOfMonth();
+		String ActualDeparturedate =driver.findElement(By.cssSelector("div[class='sc-iHhHRJ sc-kqlzXE blwiEW'] span[class='sc-cPuPxo LiroG']")).getText();
+		String ActualReturndate =driver.findElement(By.cssSelector("div[class='sc-iHhHRJ sc-OxbzP edzUwL'] span[class='sc-cPuPxo LiroG']")).getText();
+		int ActualDepartureDateAsINT = Integer.parseInt(ActualDeparturedate);
+		int ActualReturnDateAsINT = Integer.parseInt(ActualReturndate);
+		Assert.assertEquals(ActualDepartureDateAsINT, ExpectedDepartureDate);
+		Assert.assertEquals(ActualReturnDateAsINT, ExpectedReturnDate);
+	}
+	
+	@Test
+	public void CheckLanguageRandomly() {
+		String [] websites= {"https://global.almosafer.com/en","https://global.almosafer.com/ar"};
+		driver.get(websites[1]);
+		
+	}
+}

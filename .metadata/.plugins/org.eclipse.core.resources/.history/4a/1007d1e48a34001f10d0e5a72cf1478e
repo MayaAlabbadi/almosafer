@@ -1,0 +1,13 @@
+
+public class myTestCases {
+	@BeforeTest
+	public void mySetup() {
+		
+	}
+	
+	@Test 
+	public void firstTest() {
+		
+	}
+
+}
